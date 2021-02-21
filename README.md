@@ -9,7 +9,6 @@
       if c % 2 != 0:
         continue
       print(c)
-
     return
 
   pares(x, y)
@@ -22,7 +21,6 @@
 
   def ver(vet, hab):
     print(hab in vet)
-
     return
 
   ver(vet, hab)
@@ -40,7 +38,6 @@
       print("Avançado")
     elif anos >= 7:
       print("Jedi Master")
-
     return
 
   exp(anos)
