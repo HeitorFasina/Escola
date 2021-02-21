@@ -1,4 +1,4 @@
-3() {
+#3() {
 x = int(input("Digite o número inicial: "))
 y = int(input("Digite o número final: "))
 
@@ -11,4 +11,4 @@ def pares(x, y):
   return
 
 pares(x, y)
-}
+#}
