@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Rolagem-de-Dado-e-Redimensionamento-de-Imagem</string>
+    <string name="lan_ar_dado">Lançar Dado</string>
+    <string name="todo">TODO</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="tamanho_da_imagem">Tamanho da Imagem:</string>
+</resources>
