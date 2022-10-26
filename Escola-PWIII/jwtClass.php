@@ -1,41 +1,73 @@
 <?php
-class myJWT
-{
+
+class myJWT {
     private $senha = "SenhaSecreta";
-
-    public function criaToken($payload)
-    {
+    public function criaToken($payload){
         $header = [
-            'alg' => 'SHA256',
+            'alg' => 'HS256',
             'typ' => 'JWT'
-        ];
-
-        $header = json_encode($header); // transforma array em json
-        $header = base64_encode($header); // transforma json em base64
+         ];
+         
+         $header = json_encode($header);
+         $header = base64_encode($header);
         
-        $payload = json_encode($payload);
-        $payload = base64_encode($payload);
+         $payload = json_encode($payload);
+         $payload = base64_encode($payload);
+        
+         $signature = hash_hmac('sha256',"$header.$payload",$this->senha,true);
+         $signature = base64_encode($signature);
+        
+         return "$header.$payload.$signature";
+        
 
-        $signature = hash_hmac('SHA256', "$header.$payload", $this->senha, true); // trasforma parâmetros em um dado criptográfico
-        $signature = base64_encode($signature);
-
-        return "$header.$payload.$signature"; // retorna parâmetros e finaliza a função
     }
+    public function validaToken($jwt){
 
-    public function validaToken($jwt)
-    {
-        $part = explode(".", $jwt); // transforma string em array, separando por "."
-        $header = $part[0];
-        $payload = $part[1];
-        $signature = $part[2];
+      $part = explode(".",$jwt);
+      $header = $part[0];
+      $payload = $part[1];
+      $signature = $part[2];
+     
+      $signatureCheck = hash_hmac('sha256',"$header.$payload",$this->senha,true);
+      $signatureCheck = base64_encode($signatureCheck);
+      if ($signature == $signatureCheck){
+         $retorno = true;
+      }else {
+         $retorno = false;
+      }
+     
+      return $retorno;
+   }
+   public function isExpiredToken($jwt){
 
-        $signatureCheck = hash_hmac('SHA256', "$header.$payload", $this->senha, true);
-        $signatureCheck = base64_encode($signatureCheck);
+      $part = explode(".",$jwt);
+      $header = $part[0];
+      $payload = $part[1];
+      $signature = $part[2];
 
-        if ($signature == $signatureCheck) { // verifica se as assinaturas batem. caso não, retorna falso
-            return true;
-        }else {
-            return false;
-        }
-    }
+      // Decodificando JWT Payload de volta para objeto
+      $payload = base64_decode($payload);
+      $payload = json_decode($payload);
+      $time = time();
+
+      if ($payload->exp < $time){
+         $retorno = true;
+      }else {
+         $retorno = false;
+      }
+      return $retorno;
+   }
+   public function extractDataJWT($jwt, $index){
+
+      $part = explode(".",$jwt);
+      $extract = $part[$index];
+      // Decodificando JWT Payload de volta para objeto
+      if ($index < 2) {
+         $extract = base64_decode($extract);
+         $extract = json_decode($extract);
+      }
+      
+      return $extract;
+   }
 }
+?>
