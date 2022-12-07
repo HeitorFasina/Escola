@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">VestibularioApp</string>
+    <string name="login">Login</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="btnLogin">LOGIN</string>
+    <string name="mes_anterior"><![CDATA[ <— ]]></string>
+    <string name="mes_ano">Novembro 2022</string>
+    <string name="proximo_mes"><![CDATA[ —> ]]></string>
+    <string name="domingo">DOM</string>
+    <string name="segunda">SEG</string>
+    <string name="terca">TER</string>
+    <string name="quarta">QUA</string>
+    <string name="quinta">QUI</string>
+    <string name="sexta">SEX</string>
+    <string name="sabado">SAB</string>
+    <string name="_1">1</string>
+</resources>

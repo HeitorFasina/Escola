@@ -1,0 +1,11 @@
+body {
+    margin: auto;
+    max-width: 70%;
+    text-align: center;
+}
+
+div.container {
+    margin: auto;
+    width: fit-content;
+    text-align: right;
+}
