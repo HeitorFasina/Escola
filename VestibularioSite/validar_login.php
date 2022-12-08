@@ -11,16 +11,15 @@ if (empty($_POST['usuario']) || empty($_POST['senha'])) {
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
-$query = "SELECT * FROM login WHERE usuario = '$usuario' AND senha = md5('$senha');";
+$query = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = md5('$senha');";
 
 $result = mysqli_query($conn, $query);
-
 if ($result->num_rows == 0) {
     $_SESSION['nao_validado'] = true;
-    print("Login not succes");
-    echo $usuario . " " . $senha;
     header('Location: index.php');
     exit;
 } else {
-    print("Login Successful... Welcome ");
+    $row = $result->fetch_assoc();
+    $_SESSION['user_id'] = $row['ID'];
+    $_SESSION['user_nome'] = $row['nome'];
 }
