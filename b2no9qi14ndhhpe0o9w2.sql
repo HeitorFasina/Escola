@@ -81,8 +81,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `privilegio`, `nome`, `usuario`, `senha`) VALUES
-(1, 'admin', 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
-(2, 'user', 'Heitor Fasina', 'heitor.fasina', '827ccb0eea8a706c4c34a16891f84e7b');
+(1, 'admin', 'Admin', 'admin', '21232f297a57a5a743894a0e4a801fc3'),                -- senha: admin
+(2, 'user', 'Heitor Fasina', 'heitor.fasina', '827ccb0eea8a706c4c34a16891f84e7b'); -- senha: 12345
 
 --
 -- Indexes for dumped tables
